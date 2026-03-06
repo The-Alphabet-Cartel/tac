@@ -1,0 +1,12 @@
+[submodule "frigg"]
+	path = frigg
+	url = https://github.com/the-alphabet-cartel/frigg
+[submodule "prism"]
+	path = prism
+	url = https://github.com/the-alphabet-cartel/prism
+[submodule "portia"]
+	path = portia
+	url = https://github.com/the-alphabet-cartel/portia
+[submodule "puck"]
+	path = puck
+	url = https://github.com/the-alphabet-cartel/puck
