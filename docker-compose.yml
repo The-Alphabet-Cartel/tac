@@ -2,7 +2,7 @@
 # The Alphabet Cartel Fluxer Bots - Docker Compose
 # ============================================================================
 # FILE VERSION: v1.0.0
-# Repository: https://github.com/the-alphabet-cartel/bragi
+# Repository: https://github.com/the-alphabet-cartel/tac
 # Community: The Alphabet Cartel - https://discord.gg/alphabetcartel
 # ============================================================================
 name: tac
@@ -42,9 +42,9 @@ services:
   #    secrets:
   #      - frigg_token
   #    volumes:
-  #      - ./config:/app/src/config
-  #      - ./data:/app/data
-  #      - ./logs:/app/logs
+  #      - ./bots/frigg/config:/app/src/config
+  #      - ./bots/frigg/data:/app/data
+  #      - ./bots/frigg/logs:/app/logs
   #    healthcheck:
   #      <<: *health
 
@@ -114,26 +114,6 @@ services:
     healthcheck:
       <<: *health
 
-  # ===========================================================================
-  # Ratatoskr - JTFD's Task Manager
-  # ===========================================================================
-  #ratatoskr:
-  #  image: ghcr.io/the-alphabet-cartel/ratatoskr:latest
-  #  container_name: ratatoskr
-  #  <<: *common
-  #  environment:
-  #    <<: *env
-  #    TOKEN_FILE: /run/secrets/ratatoskr_token
-  #  env_file: .env
-  #  secrets:
-  #    - ratatoskr_token
-  #  volumes:
-  #    - ./bots/ratatoskr/logs:/app/logs
-  #    - ./bots/ratatoskr/data:/app/data
-  #    - ./bots/ratatoskr/config:/app/src/config
-  #  healthcheck:
-  #    <<: *health
-
 secrets:
   #frigg_token:
   #  file: ./secrets/frigg_fluxer_token
@@ -143,8 +123,6 @@ secrets:
     file: ./secrets/prism_fluxer_token
   puck_token:
     file: ./secrets/puck_fluxer_token
-  #ratatoskr_token:
-  #  file: ./secrets/ratatoskr_fluxer_token
   twitch_client_id:
     file: ./secrets/twitch_client_id
   twitch_client_secret:
