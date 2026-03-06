@@ -1,0 +1,157 @@
+# ============================================================================
+# The Alphabet Cartel Fluxer Bots - Docker Compose
+# ============================================================================
+# FILE VERSION: v1.0.0
+# Repository: https://github.com/the-alphabet-cartel/bragi
+# Community: The Alphabet Cartel - https://discord.gg/alphabetcartel
+# ============================================================================
+name: tac
+
+### Common Settings ###
+x-common: &common
+  restart: unless-stopped
+  networks:
+    - tac
+
+### Common Environmental Variables ###
+x-env: &env
+  PGID: ${PGID:-1000}
+  PUID: ${PUID:-1000}
+  TZ: ${TZ:-America/Los_Angeles}
+
+### Common Healthcheck Settings ###
+x-health: &health
+  interval: 5s
+  timeout: 10s
+  retries: 3
+  start_period: 60s
+  start_interval: 30s
+
+services:
+  # ===========================================================================
+  # Frigg - Role Picker Bot
+  # ===========================================================================
+  #  frigg:
+  #    image: ghcr.io/the-alphabet-cartel/frigg:latest
+  #    container_name: frigg
+  #    <<: *common
+  #    environment:
+  #      <<: *env
+  #      TOKEN_FILE: /run/secrets/frigg_token
+  #    env_file: .env
+  #    secrets:
+  #      - frigg_token
+  #    volumes:
+  #      - ./config:/app/src/config
+  #      - ./data:/app/data
+  #      - ./logs:/app/logs
+  #    healthcheck:
+  #      <<: *health
+
+  # ===========================================================================
+  # Portia - Temporary Voice Channels Bot
+  # ===========================================================================
+  portia:
+    image: ghcr.io/the-alphabet-cartel/portia:latest
+    container_name: portia
+    <<: *common
+    environment:
+      <<: *env
+      TOKEN_FILE: /run/secrets/portia_token
+    env_file: .env
+    secrets:
+      - portia_token
+    volumes:
+      - ./bots/portia/logs:/app/logs
+      - ./bots/portia/data:/app/data
+      - ./bots/portia/config:/app/src/config
+    healthcheck:
+      <<: *health
+
+  # ===========================================================================
+  # Prism - Introductions Role Assignment Bot
+  # ===========================================================================
+  prism:
+    image: ghcr.io/the-alphabet-cartel/prism:latest
+    container_name: prism
+    <<: *common
+    environment:
+      <<: *env
+      TOKEN_FILE: /run/secrets/prism_token
+    env_file: .env
+    secrets:
+      - prism_token
+    volumes:
+      - ./bots/prism/logs:/app/logs
+      - ./bots/prism/data:/app/data
+      - ./bots/prism/config:/app/src/config
+    healthcheck:
+      <<: *health
+
+  # ===========================================================================
+  # Puck - Creator Go Live Bot
+  # ===========================================================================
+  puck:
+    image: ghcr.io/the-alphabet-cartel/puck:latest
+    container_name: puck
+    <<: *common
+    environment:
+      <<: *env
+      TOKEN_FILE: /run/secrets/puck_token
+      TWITCH_CLIENT_ID_FILE: /run/secrets/twitch_client_id
+      TWITCH_CLIENT_SECRET_FILE: /run/secrets/twitch_client_secret
+      YOUTUBE_API_KEY_FILE: /run/secrets/youtube_api_key
+    env_file: .env
+    secrets:
+      - puck_token
+      - twitch_client_id
+      - twitch_client_secret
+      - youtube_api_key
+    volumes:
+      - ./bots/puck/logs:/app/logs
+      - ./bots/puck/data:/app/data
+      - ./bots/puck/config:/app/src/config
+    healthcheck:
+      <<: *health
+
+  # ===========================================================================
+  # Ratatoskr - JTFD's Task Manager
+  # ===========================================================================
+  #ratatoskr:
+  #  image: ghcr.io/the-alphabet-cartel/ratatoskr:latest
+  #  container_name: ratatoskr
+  #  <<: *common
+  #  environment:
+  #    <<: *env
+  #    TOKEN_FILE: /run/secrets/ratatoskr_token
+  #  env_file: .env
+  #  secrets:
+  #    - ratatoskr_token
+  #  volumes:
+  #    - ./bots/ratatoskr/logs:/app/logs
+  #    - ./bots/ratatoskr/data:/app/data
+  #    - ./bots/ratatoskr/config:/app/src/config
+  #  healthcheck:
+  #    <<: *health
+
+secrets:
+  #frigg_token:
+  #  file: ./secrets/frigg_fluxer_token
+  portia_token:
+    file: ./secrets/portia_fluxer_token
+  prism_token:
+    file: ./secrets/prism_fluxer_token
+  puck_token:
+    file: ./secrets/puck_fluxer_token
+  #ratatoskr_token:
+  #  file: ./secrets/ratatoskr_fluxer_token
+  twitch_client_id:
+    file: ./secrets/twitch_client_id
+  twitch_client_secret:
+    file: ./secrets/twitch_client_secret
+  youtube_api_key:
+    file: ./secrets/youtube_api_key
+
+networks:
+  tac:
+    driver: bridge
