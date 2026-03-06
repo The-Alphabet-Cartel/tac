@@ -33,7 +33,7 @@ services:
   # ===========================================================================
   #  frigg:
   #    image: ghcr.io/the-alphabet-cartel/frigg:latest
-  #    container_name: frigg
+  #    container_name: tac-frigg
   #    <<: *common
   #    environment:
   #      <<: *env
@@ -53,7 +53,7 @@ services:
   # ===========================================================================
   portia:
     image: ghcr.io/the-alphabet-cartel/portia:latest
-    container_name: portia
+    container_name: tac-portia
     <<: *common
     environment:
       <<: *env
@@ -73,7 +73,7 @@ services:
   # ===========================================================================
   prism:
     image: ghcr.io/the-alphabet-cartel/prism:latest
-    container_name: prism
+    container_name: tac-prism
     <<: *common
     environment:
       <<: *env
@@ -93,7 +93,7 @@ services:
   # ===========================================================================
   puck:
     image: ghcr.io/the-alphabet-cartel/puck:latest
-    container_name: puck
+    container_name: tac-puck
     <<: *common
     environment:
       <<: *env
