@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/TAC-Logo.png" alt="The Alphabet Cartel Logo" width="200" />
+</p>
+
 # The Alphabet Cartel — Fluxer Bots
 
 Bot deployment stack for [The Alphabet Cartel](https://fluxer.gg/yGJfJH5C), an LGBTQIA+ gaming, mental health, and advocacy community on Fluxer.
