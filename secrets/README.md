@@ -9,7 +9,6 @@ This directory holds Docker Secret files for TAC's bots. These files are **never
 | `portia_fluxer_token` | Fluxer bot token for Portia | Fluxer Developer Portal |
 | `prism_fluxer_token` | Fluxer bot token for Prism | Fluxer Developer Portal |
 | `puck_fluxer_token` | Fluxer bot token for Puck | Fluxer Developer Portal |
-| `frigg_fluxer_token` | Fluxer bot token for Frigg | Fluxer Developer Portal |
 | `twitch_client_id` | Twitch application Client ID | [Twitch Developer Console](https://dev.twitch.tv/console/apps) |
 | `twitch_client_secret` | Twitch application Client Secret | [Twitch Developer Console](https://dev.twitch.tv/console/apps) |
 | `youtube_api_key` | Google/YouTube Data API v3 key | [Google Cloud Console](https://console.cloud.google.com/apis/credentials) |
@@ -24,7 +23,6 @@ This directory holds Docker Secret files for TAC's bots. These files are **never
    printf "YOUR_PORTIA_TOKEN_HERE" > ./secrets/portia_fluxer_token
    printf "YOUR_PRISM_TOKEN_HERE" > ./secrets/prism_fluxer_token
    printf "YOUR_PUCK_TOKEN_HERE" > ./secrets/puck_fluxer_token
-   printf "YOUR_FRIGG_TOKEN_HERE" > ./secrets/frigg_fluxer_token
    ```
 
 ---
@@ -116,7 +114,6 @@ After creating all secret files, set permissions:
 chmod 600 ./secrets/portia_fluxer_token
 chmod 600 ./secrets/prism_fluxer_token
 chmod 600 ./secrets/puck_fluxer_token
-chmod 600 ./secrets/frigg_fluxer_token
 chmod 600 ./secrets/twitch_client_id
 chmod 600 ./secrets/twitch_client_secret
 chmod 600 ./secrets/youtube_api_key
